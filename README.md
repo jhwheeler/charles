@@ -2,9 +2,11 @@
 Charles is a simple yet powerful code execution engine, designed as an initial component of the CodeGenie project. It supports executing JavaScript, Python, and shell scripts from the command line with ease.
 
 ## Getting Started
+
 Follow these steps to use Charles to execute your scripts:
 
 1. Set up Charles
+
 Clone the Charles repository or download the charles script file.
 
 Make the script executable by running:
@@ -19,6 +21,7 @@ sudo ln -s "$(pwd)/charles" /usr/local/bin/charles
 ```
 
 2. Running Charles
+
 To run Charles with your desired script, use the following command:
 
 ```
