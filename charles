@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+
+import subprocess
+import os
+
+def execute_file(file_path):
+    # Determine the language based on the file extension
+    _, file_extension = os.path.splitext(file_path)
+    language = {
+        ".js": "javascript",
+        ".py": "python",
+        ".sh": "shell",
+    }.get(file_extension)
+
+    if not language:
+        raise ValueError(f"Unsupported file extension: {file_extension}")
+
+    try:
+        # Execute the code using Node.js (for JavaScript), Python, or a shell (for shell commands)
+        if language == "javascript":
+            command = ["node", file_path]
+        elif language == "python":
+            command = ["python", file_path]
+        else:  # Assuming shell commands
+            command = ["bash", file_path]
+
+        result = subprocess.run(command, capture_output=True, text=True, check=True)
+        
+        # Return the output of the executed code or commands
+        return result.stdout
+    except subprocess.CalledProcessError as e:
+        # If there was an error, return the error message
+        return e.stderr
+
+if __name__ == "__main__":
+    import sys
+
+    if len(sys.argv) != 2:
+        print(f"Usage: {sys.argv[0]} <file_path>")
+        sys.exit(1)
+
+    file_path = sys.argv[1]
+    output = execute_file(file_path)
+    print("Output:", output)

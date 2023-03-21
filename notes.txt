@@ -1,0 +1,5 @@
+1. voice detection, convert to text
+2. prompt LLM w/ text
+3. LLM outputes code to complete the user's request
+4. ???
+5. profit
